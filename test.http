@@ -1,0 +1,5 @@
+get http://localhost:3000/places
+
+###
+
+get http://localhost:3000
