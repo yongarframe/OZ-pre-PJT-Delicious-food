@@ -8,7 +8,7 @@ export type Place = {
   lat: number;
   lon: number;
   description: string;
-}[];
+};
 
 export type Location = {
   lat: number;
