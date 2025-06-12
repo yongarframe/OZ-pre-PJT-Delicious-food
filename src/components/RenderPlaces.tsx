@@ -1,9 +1,9 @@
 "use client";
 import { Place } from "@/types/placestype";
-import { useLocation } from "@/store/locationStore";
 import { sortPlacesByDistance } from "../util/loc";
 import { useEffect, useState } from "react";
 import RenderPlace from "./RenderPlace";
+import Loading from "./LoadingForPlace";
 
 export default function RenderPlaces({
   allPlace,
@@ -46,11 +46,13 @@ export default function RenderPlaces({
 
   return (
     <div className="flex flex-wrap justify-center gap-8 p-4 overflow-y-hidden">
-      {isLoading
-        ? sortedPlaces?.map((place) => (
-            <RenderPlace key={place.id} place={place} />
-          ))
-        : `로딩중입니다.......`}
+      {isLoading ? (
+        sortedPlaces?.map((place) => (
+          <RenderPlace key={place.id} place={place} />
+        ))
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 }
