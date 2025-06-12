@@ -1,45 +1,10 @@
-import Image from "next/image";
-import { Place } from "../types/placestype";
-
-async function Places() {
-  const res = await fetch(`http://localhost:3000/places`);
-
-  if (!res.ok) {
-    return <div>오류가 발생했습니다.</div>;
-  }
-
-  const data = await res.json();
-  const AllPlace: Place = data.places;
-  return (
-    <div className="flex flex-wrap justify-center gap-8 p-4">
-      {AllPlace.map((el) => (
-        <div
-          key={el.id}
-          className="flex flex-col bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 w-64"
-        >
-          <Image
-            className="w-full h-48 object-cover"
-            width={300}
-            height={300}
-            src={`http://localhost:3000/${el.image.src}`}
-            alt={el.image.alt}
-            priority
-          />
-          <div className="p-4">
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">
-              {el.title}
-            </h3>
-            <p className="text-gray-600 text-sm">{el.description}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
+import Places from "@/components/Places";
+import PlacesParents from "@/components/PlacesParents";
 
 export default function Home() {
   return (
     <>
+      <PlacesParents />
       <Places />
     </>
   );
