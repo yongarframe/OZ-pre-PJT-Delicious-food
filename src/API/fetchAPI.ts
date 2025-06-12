@@ -1,5 +1,7 @@
-export async function fetchPlaces() {
-  const res = await fetch(`http://localhost:3000/places`);
+import { Place } from "@/types/placestype";
+
+export async function fetchPlaces(url: string): Promise<Place[]> {
+  const res = await fetch(`http://localhost:3000${url}`);
 
   if (!res.ok) {
     console.log(res.status);

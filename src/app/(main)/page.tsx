@@ -1,4 +1,4 @@
-import Places from "@/components/FetchPlaces";
+import Places from "@/components/ListofRestaurants/FetchPlaces";
 
 export default function Home() {
   return (

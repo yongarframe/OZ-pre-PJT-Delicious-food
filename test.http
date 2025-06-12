@@ -3,3 +3,31 @@ get http://localhost:3000/places
 ###
 
 get http://localhost:3000
+
+
+###
+POST http://localhost:3000/users/places
+Content-Type: application/json
+
+{
+  "place": {
+    "id": "r10",
+    "title": "속초 중앙시장 닭강정",
+    "image": {
+      "src": "sokcho-chicken.jpg",
+      "alt": "겉은 바삭하고 속은 촉촉한 닭강정."
+    },
+    "lat": 38.2062,
+    "lon": 128.591,
+    "description": "달콤하고 매콤한 맛이 조화로운 속초 닭강정."
+  }
+}
+
+
+
+###
+get http://localhost:3000/users/places
+
+
+###
+DELETE http://localhost:3000/users/places/r10
