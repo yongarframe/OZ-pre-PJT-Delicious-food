@@ -35,7 +35,7 @@ export default function RenderPlaces({
 
   //가까운 위치 순으로 정렬
   const { lat, lon } = location;
-  const sortedPlaces = sortPlacesByDistance(allPlace, lat, lon);
+  const sortedPlaces: Place[] = sortPlacesByDistance(allPlace, lat, lon);
   if (errorMessage) {
     return (
       <div className="fixed top-1/5 left-1/2 transform -translate-x-1/2 bg-red-50 p-5 border border-red-300 rounded-lg z-[1000]">
