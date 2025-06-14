@@ -4,6 +4,7 @@ import { sortPlacesByDistance } from "@/util/loc";
 import { useEffect, useState } from "react";
 import RenderPlace from "./RenderPlace";
 import Loading from "@/components/ListofRestaurants/LoadingForPlace";
+import FavoriteDeleteModal from "./FavoriteDeleteModal";
 
 export default function RenderFavorites({
   favoritePlace,
@@ -13,7 +14,9 @@ export default function RenderFavorites({
   errorMessage: string | null;
 }) {
   const [location, setLocation] = useState<Location | null>(null);
+  const [placeId, setPlaceId] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isModal, setIsModal] = useState(false);
 
   //현재위치 받아오기
   useEffect(() => {
@@ -51,10 +54,25 @@ export default function RenderFavorites({
   }
 
   return (
-    <div className="flex flex-wrap justify-center gap-8 p-4 overflow-y-hidden">
-      {sortedPlaces?.map((place) => (
-        <RenderPlace key={place.id} place={place} />
-      ))}
-    </div>
+    <>
+      <div className="flex flex-wrap justify-center gap-8 p-4 overflow-y-hidden">
+        {sortedPlaces?.map((place) => (
+          <RenderPlace
+            key={place.id}
+            place={place}
+            setIsModal={setIsModal}
+            setPlaceId={setPlaceId}
+          />
+        ))}
+      </div>
+      {isModal && (
+        <div
+          className="fixed top-0 left-0 w-full h-full backdrop-blur-xs flex"
+          onClick={() => setIsModal(false)}
+        >
+          <FavoriteDeleteModal placeId={placeId} setIsModal={setIsModal} />
+        </div>
+      )}
+    </>
   );
 }
