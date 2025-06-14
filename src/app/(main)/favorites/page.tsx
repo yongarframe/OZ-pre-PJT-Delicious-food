@@ -4,7 +4,10 @@ import { Place } from "@/types/placestype";
 
 export default async function Places() {
   try {
-    const favoritePlace: Place[] = await fetchPlaces("/users/places");
+    const favoritePlace: Place[] = await fetchPlaces(
+      "/users/places",
+      "no-store"
+    );
     return (
       <RenderFavorites favoritePlace={favoritePlace} errorMessage={null} />
     );

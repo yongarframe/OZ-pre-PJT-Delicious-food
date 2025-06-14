@@ -2,9 +2,9 @@
 import { Location, Place } from "@/types/placestype";
 import { sortPlacesByDistance } from "@/util/loc";
 import { useEffect, useState } from "react";
-import RenderPlace from "./RenderPlace";
 import Loading from "@/components/ListofRestaurants/LoadingForPlace";
 import FavoriteDeleteModal from "./FavoriteDeleteModal";
+import RanderFavorite from "./RenderFavorite";
 
 export default function RenderFavorites({
   favoritePlace,
@@ -57,7 +57,7 @@ export default function RenderFavorites({
     <>
       <div className="flex flex-wrap justify-center gap-8 p-4 overflow-y-hidden">
         {sortedPlaces?.map((place) => (
-          <RenderPlace
+          <RanderFavorite
             key={place.id}
             place={place}
             setIsModal={setIsModal}

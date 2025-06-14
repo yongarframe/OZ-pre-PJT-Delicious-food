@@ -1,10 +1,20 @@
 import { Place } from "@/types/placestype";
 
-export async function fetchPlaces(url: string): Promise<Place[]> {
-  const res = await fetch(`http://localhost:3000${url}`);
+type RequestCache =
+  | "default"
+  | "no-store"
+  | "reload"
+  | "no-cache"
+  | "force-cache"
+  | "only-if-cached";
+
+export async function fetchPlaces(
+  url: string,
+  cache: RequestCache
+): Promise<Place[]> {
+  const res = await fetch(`http://localhost:3000${url}`, { cache: cache });
 
   if (!res.ok) {
-    console.log(res.status);
     switch (res.status) {
       case 400:
         throw new Error("잘못된 요청입니다. 입력값을 확인해주세요.");
