@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Place } from "@/types/placestype";
 import React from "react";
 
-export default function RenderPlace({
+export default function RanderFavorite({
   place,
   setIsModal,
   setPlaceId,

@@ -1,6 +1,5 @@
 "use client";
-import { Location, Place } from "@/types/placestype";
-import { sortPlacesByDistance } from "@/util/loc";
+import { Place } from "@/types/placestype";
 import { useEffect, useState } from "react";
 import Loading from "@/components/ListofRestaurants/LoadingForPlace";
 import FavoriteDeleteModal from "./FavoriteDeleteModal";
@@ -13,36 +12,20 @@ export default function RenderFavorites({
   favoritePlace: Place[];
   errorMessage: string | null;
 }) {
-  const [location, setLocation] = useState<Location | null>(null);
   const [placeId, setPlaceId] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isModal, setIsModal] = useState(false);
 
-  //현재위치 받아오기
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition((success) =>
-      setLocation({
-        // 위치정보 업데이트
-        lat: success.coords.latitude, // 위도
-        lon: success.coords.longitude, // 경도
-      })
-    );
-  }, []);
-
-  //맛집정보 받아오기 전에 Loading 화면 띄우기
+  //즐겨찾기 받아오기 전에 Loading 화면 띄우기
   useEffect(() => {
     if (favoritePlace) {
       setIsLoading(true);
     }
   }, [favoritePlace]);
 
-  if (!location || !isLoading) {
+  if (!isLoading) {
     return <Loading />;
   }
-
-  //가까운 위치 순으로 정렬
-  const { lat, lon } = location;
-  const sortedPlaces: Place[] = sortPlacesByDistance(favoritePlace, lat, lon);
 
   // 에러 메시지 출력
   if (errorMessage) {
@@ -56,7 +39,7 @@ export default function RenderFavorites({
   return (
     <>
       <div className="flex flex-wrap justify-center gap-8 p-4 overflow-y-hidden">
-        {sortedPlaces?.map((place) => (
+        {favoritePlace?.map((place) => (
           <RanderFavorite
             key={place.id}
             place={place}
