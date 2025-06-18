@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+|
+|
+├─ src
+│  ├─ API                                데이터 불러오기 API
+│  │  └─ fetchAPI.ts
+│  ├─ actions                            즐겨찾기 추가/삭제API
+│  │  ├─ addFavorties.ts
+│  │  └─ deleteFavorite.ts
+│  ├─ app
+│  │  ├─ (main)                          라우트 그룸 설정 (라우팅 주소에 영향이 안감)
+│  │  │  ├─ favorites
+│  │  │  │  └─ page.tsx                  localhost:3000/favorites
+│  │  │  ├─ layout.tsx                   전체 레이아웃
+│  │  │  └─ page.tsx                     localhost:3000
+│  │  ├─ error.tsx                       에러발생 시 이동페이지
+│  │  ├─ favicon.ico
+│  │  ├─ globals.css
+│  │  └─ layout.tsx
+│  ├─ components
+│  │  ├─ Favorites                       favorites 페이지 컴포넌트
+│  │  │  ├─ FavoriteDeleteModal.tsx
+│  │  │  ├─ RenderFavorite.tsx
+│  │  │  └─ RenderFavorites.tsx
+│  │  └─ ListofRestaurants               루트페이지 컴포넌트
+│  │     ├─ FetchPlaces.tsx
+│  │     ├─ LoadingForPlace.tsx
+│  │     ├─ RenderPlace.tsx
+│  │     └─ RenderPlaces.tsx
+│  ├─ store
+│  │  └─ locationStore.ts
+│  ├─ types
+│  │  └─ placestype.ts                   타입 정의
+│  └─ util                               유틸 함수
+│     ├─ delay.ts                        딜레이적용 함수
+│     └─ loc.ts                          가까운 거리 계산함수
+├─ test.http                             REST API
+└─ tsconfig.json
+```

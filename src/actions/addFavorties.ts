@@ -1,6 +1,5 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
 import { Place } from "@/types/placestype";
 
 export default async function addFoavorite(place: Place) {
@@ -17,5 +16,4 @@ export default async function addFoavorite(place: Place) {
     throw new Error(`서버오류 : ${res.status}`);
   }
   console.log("성공", await res.json());
-  revalidatePath("/favorite");
 }

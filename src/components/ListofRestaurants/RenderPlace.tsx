@@ -3,8 +3,6 @@ import { Place } from "@/types/placestype";
 import addFoavorite from "@/actions/addFavorties";
 
 export default function RenderPlace({ place }: { place: Place }) {
-  // 클릭을 하면
-  // 같은 id의 place data 를 console 에 출력
   const addFavoritePlace = async () => {
     addFoavorite(place);
   };

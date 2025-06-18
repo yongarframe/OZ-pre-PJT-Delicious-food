@@ -31,6 +31,6 @@ export async function fetchPlaces(
     }
   }
 
-  const data = await res.json();
+  const data: { places: Place[] } = await res.json();
   return data.places;
 }

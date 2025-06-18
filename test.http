@@ -1,33 +1,27 @@
 get http://localhost:3000/places
 
-###
 
-get http://localhost:3000
-
-
-###
+### 즐겨찾기 추가
 POST http://localhost:3000/users/places
 Content-Type: application/json
 
 {
   "place": {
-    "id": "r10",
-    "title": "속초 중앙시장 닭강정",
-    "image": {
-      "src": "sokcho-chicken.jpg",
-      "alt": "겉은 바삭하고 속은 촉촉한 닭강정."
-    },
-    "lat": 38.2062,
-    "lon": 128.591,
-    "description": "달콤하고 매콤한 맛이 조화로운 속초 닭강정."
-  }
+      "id": "r3",
+      "title": "부산 광안리 해산물집",
+      "image": {
+        "src": "busan-seafood.jpg",
+        "alt": "광안대교가 보이는 해산물 요리."
+      },
+      "lat": 35.1533,
+      "lon": 129.118,
+      "description": "광안리 바다를 바라보며 신선한 해산물을 맛볼 수 있는 맛집."
+    }
 }
 
-
-
-###
+### 즐겨찾기 목록 불러오기
 get http://localhost:3000/users/places
 
 
-###
-DELETE http://localhost:3000/users/places/r10
+### 즟겨찾기 삭제
+DELETE http://localhost:3000/users/places/r4
